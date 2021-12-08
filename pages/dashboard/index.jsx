@@ -7,3 +7,17 @@ export default function Dashboard() {
         </Layout>
     );
 }
+
+export function getServerSideProps({ req }) {
+    if (Object.keys(req.cookies).length === 0) {
+        return {
+            redirect: {
+                destination: "/login",
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+}

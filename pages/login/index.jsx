@@ -54,3 +54,17 @@ export default function Login() {
         </Layout>
     );
 }
+
+export function getServerSideProps({ req }) {
+    if (Object.keys(req.cookies).length === 1) {
+        return {
+            redirect: {
+                destination: "/dashboard",
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+}
